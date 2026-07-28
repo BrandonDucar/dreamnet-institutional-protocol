@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.dreamnet.ink/institutional/verification-decision.v1.json",
+  "title": "DreamNet Verification Decision v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "verificationId",
+    "targetClaimDigest",
+    "verifier",
+    "verdict",
+    "confidence",
+    "findings",
+    "evidence",
+    "counterclaimResolutions",
+    "verifiedAt",
+    "integrity"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "dreamnet.verification.v1"
+    },
+    "verificationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetClaimDigest": {
+      "$ref": "#/$defs/digest"
+    },
+    "verifier": {
+      "$ref": "#/$defs/lineage"
+    },
+    "verdict": {
+      "enum": [
+        "supports",
+        "challenges",
+        "inconclusive"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/artifactReference"
+      }
+    },
+    "counterclaimResolutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "counterclaimId",
+          "status",
+          "reason"
+        ],
+        "properties": {
+          "counterclaimId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "sustained",
+              "rejected",
+              "unresolved"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "verifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "integrity": {
+      "$ref": "#/$defs/integrity"
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "factoryId",
+        "organismId",
+        "workerIds",
+        "modelLineages",
+        "retrievalLineages"
+      ],
+      "properties": {
+        "factoryId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "organismId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workerIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "modelLineages": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "retrievalLineages": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "artifactReference": {
+      "type": "object",
+      "required": [
+        "artifactId",
+        "artifactType",
+        "schemaVersion",
+        "uri",
+        "digest"
+      ],
+      "properties": {
+        "artifactId": {
+          "type": "string"
+        },
+        "artifactType": {
+          "type": "string"
+        },
+        "schemaVersion": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "canonicalization",
+        "digest"
+      ],
+      "properties": {
+        "canonicalization": {
+          "const": "dreamnet.sorted-json.v1"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    }
+  }
+}

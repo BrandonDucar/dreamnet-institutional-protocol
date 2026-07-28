@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.dreamnet.ink/institutional/spore-envelope.v1.json",
+  "title": "DreamNet Spore Envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "sporeId",
+    "sourceOrganismId",
+    "targetOrganismId",
+    "artifactRefs",
+    "protocolBindings",
+    "issuedAt",
+    "integrity"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "dreamnet.spore.v1"
+    },
+    "sporeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceOrganismId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetOrganismId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifactRefs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/artifactReference"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "artifactType": {
+                "const": "claim"
+              }
+            }
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "artifactType": {
+                "const": "verification"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "protocolBindings": {
+      "type": "array",
+      "allOf": [
+        {
+          "contains": {
+            "const": "spore"
+          }
+        },
+        {
+          "contains": {
+            "const": "a2a"
+          }
+        }
+      ]
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "integrity": {
+      "$ref": "#/$defs/integrity"
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "artifactReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "artifactType",
+        "schemaVersion",
+        "uri",
+        "digest"
+      ],
+      "properties": {
+        "artifactId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactType": {
+          "enum": [
+            "claim",
+            "verification"
+          ]
+        },
+        "schemaVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "canonicalization",
+        "digest"
+      ],
+      "properties": {
+        "canonicalization": {
+          "const": "dreamnet.sorted-json.v1"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    }
+  }
+}

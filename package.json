@@ -1,0 +1,44 @@
+{
+  "name": "@dreamnet/institutional-protocol",
+  "version": "0.1.0",
+  "description": "Open contracts for persistent, accountable agent institutions and portable verified knowledge",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test \"dist/test/*.test.js\"",
+    "demo": "npm run build && node dist/src/demo.js",
+    "demo:write": "npm run build && node dist/src/demo.js --write",
+    "verify": "npm test && npm run demo"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.21",
+    "typescript": "5.8.3"
+  },
+  "keywords": [
+    "ai-agents",
+    "agent-infrastructure",
+    "verifiable-credentials",
+    "provenance",
+    "multi-agent-systems",
+    "dreamnet"
+  ],
+  "license": "Apache-2.0"
+}
