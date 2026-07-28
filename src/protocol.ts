@@ -11,6 +11,7 @@ import type {
   CompetencyCredential,
   Counterclaim,
   CounterclaimResolution,
+  Digest,
   EvidenceArtifact,
   ExecutionReceipt,
   FactoryLineage,
@@ -82,7 +83,7 @@ export interface IssueCompetencyInput {
   capability: string;
   validFrom: string;
   validUntil: string;
-  workoutReceiptDigests: string[];
+  workoutReceiptDigests: Digest[];
   fieldExam: CompetencyCredential["evidence"]["fieldExam"];
 }
 

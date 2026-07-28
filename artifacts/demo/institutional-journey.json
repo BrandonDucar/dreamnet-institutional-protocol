@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "dreamnet.institutional-journey.v1",
+  "fixtureMode": "synthetic-protocol-demonstration",
+  "credential": {
+    "schemaVersion": "dreamnet.competency.v1",
+    "credentialId": "urn:dreamnet:competency:eb5e0087f165e1cc0441ccc120a789f1",
+    "issuerId": "did:dreamnet:university:toolgym",
+    "subjectAgentId": "did:dreamnet:agent:weaver-apprentice",
+    "capability": "repository-supply-chain-review",
+    "level": "proctored-field-mastery",
+    "status": "active",
+    "validFrom": "2026-07-28T12:00:00.000Z",
+    "validUntil": "2027-07-28T12:00:00.000Z",
+    "evidence": {
+      "workoutReceiptDigests": [
+        "sha256:370de6535cd4827cc5dcae186508086ba9ab2a821e81b602b04aa2c943da117e",
+        "sha256:bf773ac4a5d91315c22b88650ad237d28e94ce7fe12e8b7cb51ddc3b8c357763",
+        "sha256:2e9ee0cc516dd2bea10181607e5ed85206a1c992ebe7df681b35a7f7cf878a52",
+        "sha256:ffe45053f9ac4de6b102a9b57b4aae83f53a70d7d586dd4cfe2102a73718e0d1"
+      ],
+      "fieldExam": {
+        "receiptDigest": "sha256:fe62d227215ca52f9dd109cdebaddba025824d8ae9e9f19ba66786820317eb0f",
+        "reviewerId": "did:dreamnet:human:examiner-7",
+        "reviewerOrganization": "DreamNet ToolGym",
+        "independentlyAttested": true,
+        "passed": true
+      }
+    },
+    "standards": [
+      "toolgym",
+      "w3c-vc"
+    ],
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:16453b5f5318aa3f025cb561a246c2eacaebe97e1d9dce56463c2f4d769a770b"
+    }
+  },
+  "assignment": {
+    "schemaVersion": "dreamnet.institutional-assignment.v1",
+    "assignmentId": "assignment:supply-chain-fixture-001",
+    "principalId": "did:dreamnet:principal:protocol-lab",
+    "agentId": "did:dreamnet:agent:weaver-apprentice",
+    "goal": "Audit a synthetic repository for seeded supply-chain risks.",
+    "acceptanceCriteria": [
+      "Inspect package lifecycle scripts.",
+      "Inspect Git hooks.",
+      "Identify dangerous dynamic execution APIs.",
+      "Produce evidence without executing external code."
+    ],
+    "capabilityRequired": "repository-supply-chain-review",
+    "competencyCredentialId": "urn:dreamnet:competency:eb5e0087f165e1cc0441ccc120a789f1",
+    "dreamLoopId": "dreamloop:supply-chain-review-v1",
+    "capsuleId": "capsule:bounded-read-only-review-v1",
+    "riskTier": "medium",
+    "humanApproval": {
+      "required": false,
+      "approved": false
+    },
+    "idempotencyKey": "fixture:supply-chain-fixture-001:v1",
+    "authorizedAt": "2026-07-28T13:00:00.000Z",
+    "authorizationDigest": "sha256:34167c8599c44c4d205d9b93cd7bf5a3f6b774bb42d09e94dfc6eb3eee5bb5de"
+  },
+  "evidence": [
+    {
+      "schemaVersion": "dreamnet.evidence.v1",
+      "evidenceId": "evidence:lifecycle-scan-001",
+      "kind": "observation",
+      "uri": "urn:dreamnet:fixture:lifecycle-scan-001",
+      "mediaType": "application/json",
+      "claimClass": "SYSTEM_OBSERVATION",
+      "assertions": [
+        "package.json lifecycle scripts were enumerated.",
+        "A seeded postinstall network-execution pattern was detected."
+      ],
+      "observedAt": "2026-07-28T13:04:00.000Z",
+      "integrity": {
+        "canonicalization": "dreamnet.sorted-json.v1",
+        "digest": "sha256:562ef67abf3ea102b3202c828997df0f5997f6a448773c2edf9f35a88b561658"
+      }
+    },
+    {
+      "schemaVersion": "dreamnet.evidence.v1",
+      "evidenceId": "evidence:hook-scan-001",
+      "kind": "observation",
+      "uri": "urn:dreamnet:fixture:hook-scan-001",
+      "mediaType": "application/json",
+      "claimClass": "SYSTEM_OBSERVATION",
+      "assertions": [
+        "Git and Husky hooks were enumerated.",
+        "A seeded remote payload execution pattern was detected."
+      ],
+      "observedAt": "2026-07-28T13:05:00.000Z",
+      "integrity": {
+        "canonicalization": "dreamnet.sorted-json.v1",
+        "digest": "sha256:3ceb3a3b19562ac07ef494ae898f6db225248204e6a36f2d5a0e5182153d4961"
+      }
+    },
+    {
+      "schemaVersion": "dreamnet.evidence.v1",
+      "evidenceId": "evidence:fixture-tests-001",
+      "kind": "test",
+      "uri": "urn:dreamnet:fixture:test-report-001",
+      "mediaType": "application/json",
+      "claimClass": "DEMONSTRATED_STATE",
+      "assertions": [
+        "All seeded lifecycle, hook, and dynamic execution risks were identified.",
+        "No package install, network request, tool call, or external action occurred."
+      ],
+      "observedAt": "2026-07-28T13:08:00.000Z",
+      "integrity": {
+        "canonicalization": "dreamnet.sorted-json.v1",
+        "digest": "sha256:0d7e9d8881777cf4084e1871edcb8970904290f7c2a6e91b2509e5927b9ab70a"
+      }
+    }
+  ],
+  "receipt": {
+    "schemaVersion": "dreamnet.institutional-receipt.v1",
+    "receiptId": "urn:dreamnet:receipt:5282e3cfb8ae703b21813fca7e065f16",
+    "assignmentId": "assignment:supply-chain-fixture-001",
+    "agentId": "did:dreamnet:agent:weaver-apprentice",
+    "traceId": "trace:institutional-demo-001",
+    "status": "succeeded",
+    "summary": "Completed a read-only review and identified all seeded risks.",
+    "startedAt": "2026-07-28T13:01:00.000Z",
+    "completedAt": "2026-07-28T13:09:00.000Z",
+    "evidence": [
+      {
+        "artifactId": "evidence:lifecycle-scan-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:lifecycle-scan-001",
+        "digest": "sha256:562ef67abf3ea102b3202c828997df0f5997f6a448773c2edf9f35a88b561658"
+      },
+      {
+        "artifactId": "evidence:hook-scan-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:hook-scan-001",
+        "digest": "sha256:3ceb3a3b19562ac07ef494ae898f6db225248204e6a36f2d5a0e5182153d4961"
+      },
+      {
+        "artifactId": "evidence:fixture-tests-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:test-report-001",
+        "digest": "sha256:0d7e9d8881777cf4084e1871edcb8970904290f7c2a6e91b2509e5927b9ab70a"
+      }
+    ],
+    "outputs": [],
+    "standards": [
+      "dreamnet-public-core",
+      "dreamloops",
+      "w3c-prov",
+      "temporal"
+    ],
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:0c73d8e0597eb26aff14098eaced65b1107c5bc3d25a44cd5b1f2c985f7e99b7"
+    }
+  },
+  "claim": {
+    "schemaVersion": "dreamnet.institutional-claim.v1",
+    "claimId": "urn:dreamnet:claim:be04a962eaf41e6cd46fdd0793c6fc61",
+    "claimClass": "DEMONSTRATED_STATE",
+    "statement": "The agent completed the repository supply-chain review and identified every seeded risk without executing external code.",
+    "scope": {
+      "domain": "software-supply-chain-security",
+      "capability": "repository-supply-chain-review",
+      "validFrom": "2026-07-28T13:09:00.000Z"
+    },
+    "status": "proposed",
+    "producer": {
+      "factoryId": "urn:dreamnet:factory:supply-chain-review",
+      "organismId": "urn:dreamnet:organism:dreamnet",
+      "workerIds": [
+        "did:dreamnet:worker:lifecycle-auditor",
+        "did:dreamnet:worker:hook-auditor"
+      ],
+      "modelLineages": [
+        "model:dreamnet:reviewer-a"
+      ],
+      "retrievalLineages": [
+        "retrieval:dreamnet:repository-snapshot-a"
+      ]
+    },
+    "receiptDigest": "sha256:0c73d8e0597eb26aff14098eaced65b1107c5bc3d25a44cd5b1f2c985f7e99b7",
+    "evidence": [
+      {
+        "artifactId": "evidence:lifecycle-scan-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:lifecycle-scan-001",
+        "digest": "sha256:562ef67abf3ea102b3202c828997df0f5997f6a448773c2edf9f35a88b561658"
+      },
+      {
+        "artifactId": "evidence:hook-scan-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:hook-scan-001",
+        "digest": "sha256:3ceb3a3b19562ac07ef494ae898f6db225248204e6a36f2d5a0e5182153d4961"
+      },
+      {
+        "artifactId": "evidence:fixture-tests-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:test-report-001",
+        "digest": "sha256:0d7e9d8881777cf4084e1871edcb8970904290f7c2a6e91b2509e5927b9ab70a"
+      }
+    ],
+    "createdAt": "2026-07-28T13:10:00.000Z",
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:def6c0aff8347264397e8c5313743ad588d055e2aa984fad0b81f488510ba697"
+    }
+  },
+  "counterclaim": {
+    "schemaVersion": "dreamnet.counterclaim.v1",
+    "counterclaimId": "urn:dreamnet:counterclaim:3a38c1dd0ee15a4716bc2d87dae245a7",
+    "targetClaimDigest": "sha256:def6c0aff8347264397e8c5313743ad588d055e2aa984fad0b81f488510ba697",
+    "statement": "The review may have omitted package lifecycle-script analysis.",
+    "producer": {
+      "factoryId": "urn:zao:factory:adversarial-review",
+      "organismId": "urn:dreamnet:organism:zao",
+      "workerIds": [
+        "did:zao:worker:challenge-17"
+      ],
+      "modelLineages": [
+        "model:zao:adversary-b"
+      ],
+      "retrievalLineages": [
+        "retrieval:zao:repository-snapshot-b"
+      ]
+    },
+    "evidence": [
+      {
+        "artifactId": "evidence:lifecycle-scan-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:lifecycle-scan-001",
+        "digest": "sha256:562ef67abf3ea102b3202c828997df0f5997f6a448773c2edf9f35a88b561658"
+      }
+    ],
+    "createdAt": "2026-07-28T13:12:00.000Z",
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:fd7dcc4c8a39e7b7c98c14199f6501d8e8a7a7e6a03387886d467b0748e1c615"
+    }
+  },
+  "verification": {
+    "schemaVersion": "dreamnet.verification.v1",
+    "verificationId": "urn:dreamnet:verification:6eaef5c081727b705884f0a54197106e",
+    "targetClaimDigest": "sha256:def6c0aff8347264397e8c5313743ad588d055e2aa984fad0b81f488510ba697",
+    "verifier": {
+      "factoryId": "urn:zao:factory:independent-verification",
+      "organismId": "urn:dreamnet:organism:zao",
+      "workerIds": [
+        "did:zao:worker:verifier-31"
+      ],
+      "modelLineages": [
+        "model:zao:verifier-c"
+      ],
+      "retrievalLineages": [
+        "retrieval:zao:clean-room-snapshot-c"
+      ]
+    },
+    "verdict": "supports",
+    "confidence": 0.94,
+    "findings": [
+      "The lifecycle evidence explicitly enumerates package scripts.",
+      "The independent fixture replay found every seeded risk.",
+      "The counterclaim is contradicted by integrity-verified evidence."
+    ],
+    "evidence": [
+      {
+        "artifactId": "evidence:lifecycle-scan-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:lifecycle-scan-001",
+        "digest": "sha256:562ef67abf3ea102b3202c828997df0f5997f6a448773c2edf9f35a88b561658"
+      },
+      {
+        "artifactId": "evidence:fixture-tests-001",
+        "artifactType": "evidence",
+        "schemaVersion": "dreamnet.evidence.v1",
+        "uri": "urn:dreamnet:fixture:test-report-001",
+        "digest": "sha256:0d7e9d8881777cf4084e1871edcb8970904290f7c2a6e91b2509e5927b9ab70a"
+      }
+    ],
+    "counterclaimResolutions": [
+      {
+        "counterclaimId": "urn:dreamnet:counterclaim:3a38c1dd0ee15a4716bc2d87dae245a7",
+        "status": "rejected",
+        "reason": "Lifecycle-script analysis is explicitly recorded in the evidence artifact."
+      }
+    ],
+    "verifiedAt": "2026-07-28T13:20:00.000Z",
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:0abedbb9646cd2e3b0c2bd916bdd705976520de885ef9db4d0c32ceed0a1a620"
+    }
+  },
+  "spore": {
+    "schemaVersion": "dreamnet.spore.v1",
+    "sporeId": "urn:dreamnet:spore:55657ce79caa368517f1fc8f7a2742a7",
+    "sourceOrganismId": "urn:dreamnet:organism:dreamnet",
+    "targetOrganismId": "urn:dreamnet:organism:zao",
+    "artifactRefs": [
+      {
+        "artifactId": "urn:dreamnet:claim:be04a962eaf41e6cd46fdd0793c6fc61",
+        "artifactType": "claim",
+        "schemaVersion": "dreamnet.institutional-claim.v1",
+        "uri": "urn:dreamnet:artifact:urn:dreamnet:claim:be04a962eaf41e6cd46fdd0793c6fc61",
+        "digest": "sha256:def6c0aff8347264397e8c5313743ad588d055e2aa984fad0b81f488510ba697"
+      },
+      {
+        "artifactId": "urn:dreamnet:verification:6eaef5c081727b705884f0a54197106e",
+        "artifactType": "verification",
+        "schemaVersion": "dreamnet.verification.v1",
+        "uri": "urn:dreamnet:artifact:urn:dreamnet:verification:6eaef5c081727b705884f0a54197106e",
+        "digest": "sha256:0abedbb9646cd2e3b0c2bd916bdd705976520de885ef9db4d0c32ceed0a1a620"
+      }
+    ],
+    "protocolBindings": [
+      "spore",
+      "a2a",
+      "w3c-prov",
+      "w3c-vc"
+    ],
+    "issuedAt": "2026-07-28T13:22:00.000Z",
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:09b7e60e740d19d4389e6af69c4e90c178533b3c34bcd2082b4672654928088f"
+    }
+  },
+  "reputation": {
+    "schemaVersion": "dreamnet.reputation-update.v1",
+    "updateId": "urn:dreamnet:reputation:321f96363513667f1feda582348af296",
+    "subjectAgentId": "did:dreamnet:agent:weaver-apprentice",
+    "capability": "repository-supply-chain-review",
+    "previousScore": 500,
+    "delta": 94,
+    "newScore": 594,
+    "policyVersion": "dreamnet.scoped-reputation.v1",
+    "basis": {
+      "claimDigest": "sha256:def6c0aff8347264397e8c5313743ad588d055e2aa984fad0b81f488510ba697",
+      "verificationDigest": "sha256:0abedbb9646cd2e3b0c2bd916bdd705976520de885ef9db4d0c32ceed0a1a620",
+      "sporeDigest": "sha256:09b7e60e740d19d4389e6af69c4e90c178533b3c34bcd2082b4672654928088f"
+    },
+    "appliedAt": "2026-07-28T13:23:00.000Z",
+    "integrity": {
+      "canonicalization": "dreamnet.sorted-json.v1",
+      "digest": "sha256:869e90db5e38a0d08056534127de8233e7b73bbb990d1ff4eb9fd9b713a88ebd"
+    }
+  },
+  "assertions": {
+    "independentVerification": true,
+    "counterclaimResolved": true,
+    "crossOrganismTransfer": true,
+    "reputationChangedOnlyAfterVerification": true,
+    "externalActionExecuted": false
+  }
+}

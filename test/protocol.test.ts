@@ -141,24 +141,57 @@ test("assignment authorization enforces capability and high-risk approval", () =
 
 test("verification requires independent factory, workers, model, and retrieval", () => {
   const journey = buildInstitutionalJourney();
+  const verifyWith = (candidate: FactoryLineage) =>
+    verifyClaim({
+      claim: journey.claim,
+      counterclaims: [],
+      verifier: candidate,
+      verdict: "supports",
+      confidence: 0.9,
+      findings: ["Would otherwise support."],
+      evidence: [journey.claim.evidence[0]!],
+      counterclaimResolutions: [],
+      verifiedAt: "2026-07-28T14:00:00.000Z",
+    });
+  const independent: FactoryLineage = {
+    factoryId: "factory:independent",
+    organismId: "organism:independent",
+    workerIds: ["worker:independent"],
+    modelLineages: ["model:independent"],
+    retrievalLineages: ["retrieval:independent"],
+  };
 
   assert.throws(
     () =>
-      verifyClaim({
-        claim: journey.claim,
-        counterclaims: [],
-        verifier: {
-          ...producer,
-          factoryId: journey.claim.producer.factoryId,
-        },
-        verdict: "supports",
-        confidence: 0.9,
-        findings: ["Would otherwise support."],
-        evidence: [journey.claim.evidence[0]!],
-        counterclaimResolutions: [],
-        verifiedAt: "2026-07-28T14:00:00.000Z",
+      verifyWith({
+        ...independent,
+        factoryId: journey.claim.producer.factoryId,
       }),
-    /verifier_factory_not_independent/,
+    /self_verification_prohibited/,
+  );
+  assert.throws(
+    () =>
+      verifyWith({
+        ...independent,
+        workerIds: [journey.claim.producer.workerIds[0]!],
+      }),
+    /verifier_worker_lineage_overlap/,
+  );
+  assert.throws(
+    () =>
+      verifyWith({
+        ...independent,
+        modelLineages: [journey.claim.producer.modelLineages[0]!],
+      }),
+    /verifier_model_lineage_overlap/,
+  );
+  assert.throws(
+    () =>
+      verifyWith({
+        ...independent,
+        retrievalLineages: [journey.claim.producer.retrievalLineages[0]!],
+      }),
+    /verifier_retrieval_lineage_overlap/,
   );
 });
 
