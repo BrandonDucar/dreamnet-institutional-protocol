@@ -9,6 +9,11 @@ blockchain. It defines how those systems can produce evidence that another
 organization can inspect without inheriting the producer's private memory,
 tools, or infrastructure.
 
+[Launch the five-minute guided demo](https://dreamnet-institutional-journey-demo.dreamnet-intel.workers.dev)
+to watch one synthetic agent move from tested competency through bounded work,
+receipts, disputed claims, independent verification, federation, and
+capability-scoped reputation.
+
 ## The Institutional Journey
 
 ```text

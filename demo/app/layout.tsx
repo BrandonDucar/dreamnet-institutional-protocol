@@ -13,7 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dreamnet-institutional-journey.sites.openai.com"),
+  metadataBase: new URL(
+    "https://dreamnet-institutional-journey-demo.dreamnet-intel.workers.dev",
+  ),
   title: {
     default: "DreamNet Institutional Journey",
     template: "%s | DreamNet",
